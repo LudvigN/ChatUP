@@ -20,6 +20,7 @@ public class BroadcastHandler implements ClientHandler.OnNewMessageListener, Cli
 		t.start();
 		
 		mClients.add(client);
+		
 	}
 	
 
@@ -30,6 +31,12 @@ public class BroadcastHandler implements ClientHandler.OnNewMessageListener, Cli
 		if(message.startsWith("#NICK"))
 		{
 			client.setNickName(message.substring(5));
+			
+			for(ClientHandler mClient : mClients)
+			{
+				mClient.sendMessage("#MSG" + client.getNickName() + " Connected");
+			}
+			
 		}
 		else if(message.startsWith("#MSG"))
 		{

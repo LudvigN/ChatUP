@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.*;
 
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.EditText;
 
 public class Client extends AsyncTask<String, String, String> {
@@ -39,8 +40,10 @@ public class Client extends AsyncTask<String, String, String> {
 			listenForInput();
 			
 		}catch(EOFException eofException){
+		    Log.d("eofException", "EOF");
 		    publishProgress("\n Client terminated connection");
 		}catch(IOException ioException){
+		    Log.d("IOException", "Detta exceptionet var kallat från startRunning metoden" );
 			ioException.printStackTrace();
 		}finally{
 			closeCrap();
@@ -59,7 +62,7 @@ public class Client extends AsyncTask<String, String, String> {
 	}
 
 	private void requestNickName() throws IOException {
-		output.writeObject("#NICK" + nickName);
+		output.writeObject("#NICK " + nickName);
 		output.flush();
 		
 		try {
@@ -81,7 +84,7 @@ public class Client extends AsyncTask<String, String, String> {
 		{
 		    startRunning();
 		    
-		    return "Exit";
+		    return "\n Server terminated the connnection";
 		}
 	
 	
@@ -125,7 +128,8 @@ public class Client extends AsyncTask<String, String, String> {
 				
 				if(message.startsWith("#MSG"))
 				{
-				    publishProgress("\n" + message);
+				    
+				    publishProgress("\n" + message.substring(5));
 				}
 				else if(message.startsWith("#USERS"))
 				{

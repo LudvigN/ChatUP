@@ -1,5 +1,7 @@
 package com.killerbees.chatup;
 
+import java.io.ObjectOutputStream.PutField;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.FragmentTransaction;
@@ -7,6 +9,8 @@ import android.view.Menu;
 
 public class MainActivity extends Activity
 {
+
+   
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -16,9 +20,8 @@ public class MainActivity extends Activity
 	    
 	    
 	   FragmentTransaction ft = getFragmentManager().beginTransaction();
-	   ft.replace(R.id.fragment_container, new ChatFragment());
-	   ft.commit();
-	    
+	   ft.replace(R.id.fragment_container, new LoginFragment());
+	   ft.commit();  
 	    
 	}
 
@@ -30,5 +33,22 @@ public class MainActivity extends Activity
 	    getMenuInflater().inflate(R.menu.main, menu);
 	    return true;
 	}
+    
+    
+    public void login(String userName)
+    {
+	   Bundle data = new Bundle();
+	   data.putString("nickname", userName);
+	   ChatFragment chat = new ChatFragment();
+	   chat.setArguments(data);
+	   FragmentTransaction ft = getFragmentManager().beginTransaction();
+	   ft.replace(R.id.fragment_container, chat);
+	   ft.commit();  
+	   
+	   
+		   
+    }
+    
+  
 
 }

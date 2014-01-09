@@ -16,7 +16,7 @@ public class MainActivity extends Activity
 	    
 	    
 	   FragmentTransaction ft = getFragmentManager().beginTransaction();
-	   ft.replace(R.id.fragment_container, new LoginFragment());
+	   ft.replace(R.id.fragment_container, new ChatFragment());
 	   ft.commit();
 	    
 	    

@@ -37,7 +37,10 @@ public class ClientHandler implements Runnable {
 	@Override
 	public void run() {
 		try {
-			setupStreams();			
+			setupStreams();	
+			
+			listener.processInput("#MSG Connected!", this);
+			
 			listenForInput();
 			closeCrap();
 		} catch (IOException e) {

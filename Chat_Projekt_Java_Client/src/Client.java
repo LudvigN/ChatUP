@@ -37,6 +37,12 @@ public class Client extends JFrame {
 						sendMessage(event.getActionCommand());
 						userText.setText("");
 					}
+					else if(event.getActionCommand().startsWith("#HELP"))
+					{
+						showMessage("Help commands: \n #USER - See a list of users online. \n" +
+								"#USER username YourMessageHere - Send a private message to 'username'." +
+								"#HELP - waaaaat \n #DENADA - nothing. error message maybe.");
+					}
 					else
 					{
 						showMessage("Unknown command!");
@@ -131,6 +137,7 @@ public class Client extends JFrame {
 				
 				if(message.startsWith("#MSG"))
 				{
+					message = message.substring(4);
 					showMessage("\n" + message);
 				}
 				else if(message.startsWith("#USERS"))

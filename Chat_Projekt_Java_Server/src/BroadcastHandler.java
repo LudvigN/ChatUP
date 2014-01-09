@@ -45,6 +45,8 @@ public class BroadcastHandler implements ClientHandler.OnNewMessageListener, Cli
 		{
 			StringBuilder sb = new StringBuilder("#USERS");
 			
+			sb.append(" ");
+			
 			for(ClientHandler mClient : mClients){
 				if(!mClient.equals(client)){
 					 sb.append(mClient.getNickName() + ",");
@@ -92,6 +94,8 @@ public class BroadcastHandler implements ClientHandler.OnNewMessageListener, Cli
 	public void disconnect(ClientHandler client) {
 		
 		mClients.remove(client);
+		
+		
 		
 	}
 	

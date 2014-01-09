@@ -135,7 +135,7 @@ public class Client extends JFrame {
 				}
 				else if(message.startsWith("#USERS"))
 				{
-					String[] users = message.substring(5).split("\\,");
+					String[] users = message.substring(6).split("\\,");
 					
 					showMessage("\n\n Users online: \n");
 					

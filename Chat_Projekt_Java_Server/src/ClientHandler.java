@@ -74,8 +74,7 @@ public class ClientHandler implements Runnable {
 
 
 	private void closeCrap() {
-		listener.processInput("#MSG disconnected!", this);
-		
+			
 		try{
 			output.close();
 			input.close();
